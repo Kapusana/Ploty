@@ -8,16 +8,73 @@
 
 
     <EditText
+        android:id="@+id/y6"
+        android:layout_width="49dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginBottom="400dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/x6"
+        app:layout_constraintTop_toBottomOf="@+id/y5" />
+
+    <EditText
+        android:id="@+id/y5"
+        android:layout_width="49dp"
+        android:layout_height="26dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/y6"
+        app:layout_constraintEnd_toEndOf="@+id/y6"
+        app:layout_constraintStart_toStartOf="@+id/y6"
+        app:layout_constraintTop_toBottomOf="@+id/y4" />
+
+    <EditText
+        android:id="@+id/y4"
+        android:layout_width="49dp"
+        android:layout_height="26dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/y5"
+        app:layout_constraintEnd_toEndOf="@+id/y5"
+        app:layout_constraintStart_toStartOf="@+id/y5"
+        app:layout_constraintTop_toBottomOf="@+id/y3" />
+
+    <EditText
+        android:id="@+id/y3"
+        android:layout_width="49dp"
+        android:layout_height="26dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/y4"
+        app:layout_constraintEnd_toEndOf="@+id/y4"
+        app:layout_constraintStart_toStartOf="@+id/y4"
+        app:layout_constraintTop_toBottomOf="@+id/y2" />
+
+    <EditText
+        android:id="@+id/y2"
+        android:layout_width="49dp"
+        android:layout_height="26dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/y3"
+        app:layout_constraintEnd_toEndOf="@+id/y3"
+        app:layout_constraintStart_toStartOf="@+id/y3"
+        app:layout_constraintTop_toBottomOf="@+id/y1" />
+
+    <EditText
         android:id="@+id/x6"
         android:layout_width="49dp"
         android:layout_height="26dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="400dp"
         android:ems="10"
         android:inputType="number"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/x5"
-        tools:layout_editor_absoluteX="181dp" />
+        app:layout_constraintStart_toEndOf="@+id/point6"
+        app:layout_constraintTop_toBottomOf="@+id/x5" />
 
     <EditText
         android:id="@+id/x5"
@@ -27,6 +84,7 @@
         android:inputType="number"
         app:layout_constraintBottom_toTopOf="@+id/x6"
         app:layout_constraintEnd_toEndOf="@+id/x6"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/x6"
         app:layout_constraintTop_toBottomOf="@+id/x4" />
 
@@ -67,15 +125,27 @@
         app:layout_constraintTop_toBottomOf="@+id/x2" />
 
     <TextView
+        android:id="@+id/point4"
+        android:layout_width="107dp"
+        android:layout_height="26dp"
+        android:text="Point 4 (x,y)"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/point5"
+        app:layout_constraintEnd_toEndOf="@+id/point5"
+        app:layout_constraintStart_toStartOf="@+id/point5"
+        app:layout_constraintTop_toBottomOf="@+id/point3" />
+
+    <TextView
         android:id="@+id/point6"
         android:layout_width="107dp"
         android:layout_height="26dp"
+        android:layout_marginStart="16dp"
         android:layout_marginBottom="400dp"
         android:text="Point 6 (x,y)"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/point5"
-        tools:layout_editor_absoluteX="16dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/point5" />
 
     <TextView
         android:id="@+id/point5"
@@ -87,17 +157,6 @@
         app:layout_constraintEnd_toEndOf="@+id/point6"
         app:layout_constraintStart_toStartOf="@+id/point6"
         app:layout_constraintTop_toBottomOf="@+id/point4" />
-
-    <TextView
-        android:id="@+id/point4"
-        android:layout_width="107dp"
-        android:layout_height="26dp"
-        android:text="Point 4 (x,y)"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/point5"
-        app:layout_constraintEnd_toEndOf="@+id/point5"
-        app:layout_constraintStart_toStartOf="@+id/point5"
-        app:layout_constraintTop_toBottomOf="@+id/point3" />
 
     <TextView
         android:id="@+id/point3"
@@ -146,5 +205,16 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/x2"
         app:layout_constraintTop_toTopOf="@+id/Point1"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="1.0" />
+
+    <EditText
+        android:id="@+id/y1"
+        android:layout_width="49dp"
+        android:layout_height="26dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="@+id/x1"
+        app:layout_constraintEnd_toEndOf="@+id/y2"
+        app:layout_constraintStart_toStartOf="@+id/y2"
+        app:layout_constraintTop_toTopOf="@+id/x1" />
 </androidx.constraintlayout.widget.ConstraintLayout>
