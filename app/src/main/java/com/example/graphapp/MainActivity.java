@@ -19,17 +19,17 @@ import java.util.ArrayList;
 import static android.widget.Toast.makeText;
 
 public class MainActivity extends AppCompatActivity {
-    Toast toast;//toast apparently cant be declared in catch block*****
-    Toast parseTestToast;
-    int testToast= 0;
+    Toast toast;
+    //Toast parseTestToast;
+    //int testToast= 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        toast = Toast.makeText(this, "Please enter a value in all fields", Toast.LENGTH_LONG);
-        parseTestToast = Toast.makeText(this, "This is what is in xCoordinates[1]" + testToast, Toast.LENGTH_LONG);
+        toast = Toast.makeText(this, "Please enter a value in all fields and make sure x values are in ascending order", Toast.LENGTH_LONG);
+        //parseTestToast = Toast.makeText(this, "This is what is in xCoordinates[1]" + testToast, Toast.LENGTH_LONG);
 
         //Create onClickListener when confirm plot -> check for null,plot graph
         Button plot = (Button) findViewById(R.id.plot);
@@ -75,26 +75,19 @@ public class MainActivity extends AppCompatActivity {
                 yCoordinatesList.add(y5);
                 yCoordinatesList.add(y6);
 
-                //ArrayList<DataPoint> dataPointArrayList = new ArrayList<DataPoint>();
-
-                //for loop to validate
-                //parse only when validated*********
-                //it still tries to plot and run lines below despite conditions
+                //parse only when validated
                 for (int i = 0; i < xCoordinatesList.size(); i++) { //converts editTexts in list to try and validates string
                     if (xCoordinatesList.get(i).getText().toString().matches("") || yCoordinatesList.get(i).getText().toString().matches("")) {
                         toast.show(); //debug - toast prints out so this works #######
                     }else{
-                        //parses to int when validated using the method
-//                        convertToInt(xCoordinatesList.get(i), xCoordinates[i]);
-//                        convertToInt(yCoordinatesList.get(i), yCoordinates[i]);
 
-                        //manual parsing attempt
+                        //manual parsing attempt - parses to int after validation
                         xCoordinates[i] = Integer.parseInt(xCoordinatesList.get(i).getText().toString());
                         yCoordinates[i] = Integer.parseInt(yCoordinatesList.get(i).getText().toString());
 
                         //toast to see whats in the variable
-                        testToast = xCoordinates[0];
-                        parseTestToast.show();
+                        //testToast = xCoordinates[0];
+                        //parseTestToast.show();
                     }
                 }
                 //remember that the coordinates still stay at zero when its empty
@@ -121,15 +114,10 @@ public class MainActivity extends AppCompatActivity {
 
                 }catch(NumberFormatException e){
                     toast.show();
+                }catch(IllegalArgumentException e){
+                    toast.show();
                 }
-
-                //maybe do validation as string before its parsed????????
-                //use try catch block after verifying attemps************
             }
         });
     }
-    //Converts edit text values from arrayList to String then to int
-//    protected void convertToInt(EditText xy, int xyGraph) {
-//        xyGraph = Integer.parseInt(xy.getText().toString());
-//    }
 }
