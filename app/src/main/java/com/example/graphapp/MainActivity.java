@@ -20,6 +20,8 @@ import static android.widget.Toast.makeText;
 
 public class MainActivity extends AppCompatActivity {
     Toast toast;//toast apparently cant be declared in catch block*****
+    Toast parseTestToast;
+    int testToast= 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         toast = Toast.makeText(this, "Please enter a value in all fields", Toast.LENGTH_LONG);
+        parseTestToast = Toast.makeText(this, "This is what is in xCoordinates[1]" + testToast, Toast.LENGTH_LONG);
 
         //Create onClickListener when confirm plot -> check for null,plot graph
         Button plot = (Button) findViewById(R.id.plot);
@@ -79,40 +82,46 @@ public class MainActivity extends AppCompatActivity {
                 //it still tries to plot and run lines below despite conditions
                 for (int i = 0; i < xCoordinatesList.size(); i++) { //converts editTexts in list to try and validates string
                     if (xCoordinatesList.get(i).getText().toString().matches("") || yCoordinatesList.get(i).getText().toString().matches("")) {
-                        toast.show();
-                    }else if(i < xCoordinatesList.size()){
+                        toast.show(); //debug - toast prints out so this works #######
+                    }else{
                         //parses to int when validated using the method
-                        convertToInt(xCoordinatesList.get(i), xCoordinates[i]);
-                        convertToInt(yCoordinatesList.get(i), yCoordinates[i]);
-                    }else if(i == xCoordinatesList.size()-1){ //when the counter reaches last number and parses then its plotting time
-                        try{
-                            DataPoint Point1 = new DataPoint(xCoordinates[0], yCoordinates[0]);
-                            DataPoint Point2 = new DataPoint(xCoordinates[1], yCoordinates[1]);
-                            DataPoint Point3 = new DataPoint(xCoordinates[2], yCoordinates[2]);
-                            DataPoint Point4 = new DataPoint(xCoordinates[3], yCoordinates[3]);
-                            DataPoint Point5 = new DataPoint(xCoordinates[4], yCoordinates[4]);
-                            DataPoint Point6 = new DataPoint(xCoordinates[5], yCoordinates[5]);
+//                        convertToInt(xCoordinatesList.get(i), xCoordinates[i]);
+//                        convertToInt(yCoordinatesList.get(i), yCoordinates[i]);
 
-                            GraphView graph = (GraphView) findViewById(R.id.graph);
-                            LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>(new DataPoint[] {
-                                new DataPoint(2, 2),
-                                new DataPoint(3, 4),
-//                                    Point1,
-//                                    Point2,
-//                                    Point3,
-//                                    Point4,
-//                                    Point5,
-//                                    Point6
-                            });
-                            graph.addSeries(series);
+                        //manual parsing attempt
+                        xCoordinates[i] = Integer.parseInt(xCoordinatesList.get(i).getText().toString());
+                        yCoordinates[i] = Integer.parseInt(yCoordinatesList.get(i).getText().toString());
 
-                        }catch(NumberFormatException e){
-                            toast.show();
-                        }
+                        //toast to see whats in the variable
+                        testToast = xCoordinates[0];
+                        parseTestToast.show();
                     }
                 }
                 //remember that the coordinates still stay at zero when its empty
+                try{
+                    DataPoint Point1 = new DataPoint(xCoordinates[0], yCoordinates[0]);
+                    DataPoint Point2 = new DataPoint(xCoordinates[1], yCoordinates[1]);
+                    DataPoint Point3 = new DataPoint(xCoordinates[2], yCoordinates[2]);
+                    DataPoint Point4 = new DataPoint(xCoordinates[3], yCoordinates[3]);
+                    DataPoint Point5 = new DataPoint(xCoordinates[4], yCoordinates[4]);
+                    DataPoint Point6 = new DataPoint(xCoordinates[5], yCoordinates[5]);
 
+                    GraphView graph = (GraphView) findViewById(R.id.graph);
+                    LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>(new DataPoint[] {
+//                            new DataPoint(2, 2),
+//                            new DataPoint(3, 4),
+                                    Point1,
+                                    Point2,
+                                    Point3,
+                                    Point4,
+                                    Point5,
+                                    Point6
+                    });
+                    graph.addSeries(series);
+
+                }catch(NumberFormatException e){
+                    toast.show();
+                }
 
                 //maybe do validation as string before its parsed????????
                 //use try catch block after verifying attemps************
@@ -120,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
     //Converts edit text values from arrayList to String then to int
-    protected void convertToInt(EditText xy, int xyGraph) {
-        xyGraph = Integer.parseInt(xy.getText().toString());
-    }
+//    protected void convertToInt(EditText xy, int xyGraph) {
+//        xyGraph = Integer.parseInt(xy.getText().toString());
+//    }
 }
