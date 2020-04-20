@@ -28,7 +28,7 @@
             android:id="@+id/dummyButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="enter values in ascending order" />
+            android:text="enter values of x in ascending order" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
